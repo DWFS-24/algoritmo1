@@ -1,0 +1,51 @@
+    
+ALGORITMO CalcularCostoProducto
+    // Leer el precio original del producto
+    LEER precioOriginal
+    
+    // Aplicar el descuento si es aplicable
+    LEER tieneCuponDescuento
+    SI tieneCuponDescuento ENTONCES
+        LEER porcentajeDescuento
+        descuento := precioOriginal * (porcentajeDescuento / 100)
+        precioConDescuento := precioOriginal - descuento
+    SINO
+        precioConDescuento := precioOriginal
+    FIN SI
+    
+    // Aplicar impuestos al producto
+    LEER porcentajeImpuestos
+    impuestos := precioConDescuento * (porcentajeImpuestos / 100)
+    
+    // Aplicar descuento por cantidad
+    LEER cantidadProductos
+    SI cantidadProductos > 1 ENTONCES
+        LEER porcentajeDescuentoCantidad
+        descuentoCantidad := precioConDescuento * cantidadProductos * (porcentajeDescuentoCantidad / 100)
+    SINO
+        descuentoCantidad := 0
+    FIN SI
+    
+    // Calcular el costo de envío
+    LEER destinoEnvio
+    LEER pesoPaquete
+    costoFijoEnvio := 10
+    costoPorKg := 2
+    costoEnvio := costoFijoEnvio + (pesoPaquete * costoPorKg)
+    
+    // Calcular el costo final del producto
+    costoFinal := (precioConDescuento * cantidadProductos) + impuestos - descuentoCantidad + costoEnvio
+    
+    // Mostrar el costo final y desglose
+    MOSTRAR "Costo final del producto: ", costoFinal
+    MOSTRAR "Desglose:"
+    MOSTRAR "   Descuento: ", descuento
+    MOSTRAR "   Impuestos: ", impuestos
+    MOSTRAR "   Descuento por cantidad: ", descuentoCantidad
+    MOSTRAR "   Costo de envío: ", costoEnvio
+FIN ALGORITMO
+
+FUNCIÓN CalcularCostoEnvio(destino, peso)
+    
+    DEVOLVER costoEnvio
+FIN FUNCIÓN
