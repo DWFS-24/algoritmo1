@@ -1,4 +1,4 @@
-    
+// author: Fredo (Arlequin)
 ALGORITMO CalcularCostoProducto
     // Leer el precio original del producto
     LEER precioOriginal
